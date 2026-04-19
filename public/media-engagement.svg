@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#121c30"/>
+      <stop offset="100%" stop-color="#0a1220"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+
+  <!-- Browser chrome frame -->
+  <g stroke="rgba(160,210,220,0.35)" stroke-width="2" fill="none">
+    <rect x="180" y="160" width="1240" height="680" rx="14"/>
+    <line x1="180" y1="220" x2="1420" y2="220"/>
+  </g>
+  <g fill="rgba(160,210,220,0.4)">
+    <circle cx="210" cy="190" r="6"/>
+    <circle cx="230" cy="190" r="6"/>
+    <circle cx="250" cy="190" r="6"/>
+  </g>
+
+  <!-- Left sidebar -->
+  <g fill="rgba(160,210,220,0.12)">
+    <rect x="200"  y="240" width="240" height="580" rx="6"/>
+  </g>
+  <g fill="rgba(160,210,220,0.4)">
+    <rect x="220" y="270" width="200" height="14" rx="3"/>
+    <rect x="220" y="300" width="160" height="10" rx="3"/>
+    <rect x="220" y="325" width="180" height="10" rx="3"/>
+    <rect x="220" y="350" width="140" height="10" rx="3"/>
+    <rect x="220" y="400" width="200" height="14" rx="3"/>
+    <rect x="220" y="430" width="160" height="10" rx="3"/>
+    <rect x="220" y="455" width="180" height="10" rx="3"/>
+  </g>
+
+  <!-- Main viewport: simple 3D model silhouette with annotation pins -->
+  <rect x="470" y="240" width="920" height="580" rx="6" fill="rgba(160,210,220,0.06)"/>
+  <g fill="rgba(160,210,220,0.55)">
+    <!-- Arched building -->
+    <path d="M620,700 L620,540 Q620,470 690,470 L1170,470 Q1240,470 1240,540 L1240,700 Z"/>
+    <!-- Doorway -->
+    <path d="M900,700 L900,600 Q900,560 930,560 L960,560 Q990,560 990,600 L990,700 Z" fill="#0a1220"/>
+  </g>
+
+  <!-- Annotation pins -->
+  <g>
+    <g transform="translate(760,520)">
+      <circle r="14" fill="rgba(233,80,50,0.9)"/>
+      <circle r="5"  fill="#fff"/>
+    </g>
+    <g transform="translate(1100,600)">
+      <circle r="14" fill="rgba(233,80,50,0.9)"/>
+      <circle r="5"  fill="#fff"/>
+    </g>
+    <g transform="translate(1200,700)">
+      <circle r="14" fill="rgba(233,80,50,0.9)"/>
+      <circle r="5"  fill="#fff"/>
+    </g>
+  </g>
+
+  <text x="60" y="960" font-family="ui-monospace, Menlo, monospace" font-size="22"
+        fill="rgba(235,239,244,0.35)" letter-spacing="6">COLLABORATION PLATFORM — PLACEHOLDER</text>
+</svg>

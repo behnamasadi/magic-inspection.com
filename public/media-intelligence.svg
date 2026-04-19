@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="bg" cx="0.5" cy="0.5" r="0.8">
+      <stop offset="0%" stop-color="#14223a"/>
+      <stop offset="100%" stop-color="#0a1220"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+
+  <!-- Point cloud forming a vase/amphora silhouette -->
+  <g fill="rgba(160,210,220,0.85)">
+    <!-- vase outline sampled as dots; simple programmatic positions -->
+    <g id="amp">
+      <circle cx="800" cy="300" r="1.4"/>
+      <circle cx="820" cy="320" r="1.4"/>
+      <circle cx="780" cy="320" r="1.4"/>
+      <circle cx="840" cy="360" r="1.4"/>
+      <circle cx="760" cy="360" r="1.4"/>
+      <circle cx="860" cy="420" r="1.4"/>
+      <circle cx="740" cy="420" r="1.4"/>
+      <circle cx="880" cy="500" r="1.4"/>
+      <circle cx="720" cy="500" r="1.4"/>
+      <circle cx="900" cy="580" r="1.4"/>
+      <circle cx="700" cy="580" r="1.4"/>
+      <circle cx="890" cy="650" r="1.4"/>
+      <circle cx="710" cy="650" r="1.4"/>
+      <circle cx="860" cy="710" r="1.4"/>
+      <circle cx="740" cy="710" r="1.4"/>
+      <circle cx="820" cy="740" r="1.4"/>
+      <circle cx="780" cy="740" r="1.4"/>
+    </g>
+  </g>
+
+  <!-- Scatter: fill interior + exterior with faint points -->
+  <g fill="rgba(160,210,220,0.35)">
+    <!-- Generated cluster of points around the center -->
+    <g>
+      <circle cx="790" cy="340" r="1"/><circle cx="810" cy="340" r="1"/>
+      <circle cx="770" cy="380" r="1"/><circle cx="830" cy="380" r="1"/>
+      <circle cx="760" cy="440" r="1"/><circle cx="840" cy="440" r="1"/>
+      <circle cx="750" cy="500" r="1"/><circle cx="850" cy="500" r="1"/>
+      <circle cx="740" cy="560" r="1"/><circle cx="860" cy="560" r="1"/>
+      <circle cx="750" cy="620" r="1"/><circle cx="850" cy="620" r="1"/>
+      <circle cx="770" cy="680" r="1"/><circle cx="830" cy="680" r="1"/>
+      <circle cx="790" cy="720" r="1"/><circle cx="810" cy="720" r="1"/>
+      <circle cx="800" cy="400" r="1"/><circle cx="800" cy="470" r="1"/>
+      <circle cx="800" cy="540" r="1"/><circle cx="800" cy="610" r="1"/>
+      <circle cx="800" cy="680" r="1"/>
+    </g>
+    <!-- Noise points scattered in the scene -->
+    <g>
+      <circle cx="200" cy="200" r="1"/><circle cx="1400" cy="250" r="1"/>
+      <circle cx="150" cy="600" r="1"/><circle cx="1450" cy="700" r="1"/>
+      <circle cx="300" cy="850" r="1"/><circle cx="1300" cy="880" r="1"/>
+      <circle cx="500" cy="150" r="1"/><circle cx="1100" cy="180" r="1"/>
+      <circle cx="400" cy="480" r="1"/><circle cx="1200" cy="520" r="1"/>
+      <circle cx="600" cy="880" r="1"/><circle cx="1000" cy="860" r="1"/>
+    </g>
+  </g>
+
+  <!-- Bounding box -->
+  <rect x="680" y="260" width="240" height="520" fill="none"
+        stroke="rgba(160,210,220,0.25)" stroke-dasharray="6 6"/>
+
+  <text x="60" y="960" font-family="ui-monospace, Menlo, monospace" font-size="22"
+        fill="rgba(235,239,244,0.35)" letter-spacing="6">3D RECONSTRUCTION — PLACEHOLDER</text>
+</svg>
