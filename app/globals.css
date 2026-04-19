@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #0c1420;
+  color: #ebeff4;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+}
+
+button {
+  font-family: inherit;
+}
+
+.kenburns {
+  animation: kb 18s ease-in-out infinite alternate;
+}
+@keyframes kb {
+  0% {
+    transform: scale(1.05) translate(0%, 0%);
+  }
+  100% {
+    transform: scale(1.18) translate(-2%, -2%);
+  }
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  background:
+    radial-gradient(1px 1px at 10% 20%, rgba(235, 239, 244, 0.5) 50%, transparent 51%),
+    radial-gradient(1px 1px at 80% 15%, rgba(235, 239, 244, 0.35) 50%, transparent 51%),
+    radial-gradient(1px 1px at 30% 70%, rgba(235, 239, 244, 0.45) 50%, transparent 51%),
+    radial-gradient(1px 1px at 60% 85%, rgba(235, 239, 244, 0.3) 50%, transparent 51%),
+    radial-gradient(1px 1px at 90% 55%, rgba(235, 239, 244, 0.4) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 45% 40%, rgba(0, 162, 162, 0.55) 50%, transparent 51%),
+    radial-gradient(1px 1px at 15% 90%, rgba(235, 239, 244, 0.3) 50%, transparent 51%),
+    radial-gradient(1px 1px at 75% 60%, rgba(235, 239, 244, 0.4) 50%, transparent 51%);
+  background-size: 100% 100%;
+  animation: drift 40s linear infinite;
+}
+@keyframes drift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 120px -80px;
+  }
+}
+
+.travel-board {
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-fade {
+  transition: opacity 500ms ease;
+}
+
+.poster {
+  transition: opacity 450ms ease;
+}
+
+.bullet::before {
+  content: "";
+  display: block;
+  width: 4rem;
+  height: 3px;
+  background: #00a2a2;
+  margin-bottom: 0.75rem;
+}
