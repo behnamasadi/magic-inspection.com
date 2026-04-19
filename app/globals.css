@@ -2,6 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------- Theme tokens ---------- */
+/* Default theme = hybrid (matches option-c-hybrid). */
+:root,
+.theme-hybrid {
+  --wedge-ember: #dc0f14;   /* hero pentagon */
+  --wedge-flame: #3a5fe0;   /* engineering / intelligence */
+  --wedge-peach: #8a5ee0;   /* automation / engagement */
+  --logo-filter: none;
+}
+
+/* Cool palette — wedges match the Photonxy AI logo gradient. */
+.theme-cool {
+  --wedge-ember: #3a5fe0;
+  --wedge-flame: #6a46d0;
+  --wedge-peach: #a98cf0;
+  --logo-filter: none;
+}
+
+/* Ember palette — original warm palette. Logo is hue-shifted into warm. */
+.theme-ember {
+  --wedge-ember: #dc0f14;
+  --wedge-flame: #eb5023;
+  --wedge-peach: #fab469;
+  --logo-filter: hue-rotate(155deg) saturate(1.35) brightness(1.05);
+}
+
+.logo-img {
+  filter: var(--logo-filter);
+}
+
 html,
 body {
   margin: 0;

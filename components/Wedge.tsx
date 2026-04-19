@@ -2,10 +2,10 @@
 
 import type { WedgeColor, WedgeCorner } from "./sections";
 
-const COLOR: Record<Exclude<WedgeColor, "none">, string> = {
-  ember: "#dc0f14",
-  flame: "#3a5fe0",
-  peach: "#8a5ee0",
+const COLOR_VAR: Record<Exclude<WedgeColor, "none">, string> = {
+  ember: "var(--wedge-ember)",
+  flame: "var(--wedge-flame)",
+  peach: "var(--wedge-peach)",
 };
 
 type Props = {
@@ -46,7 +46,7 @@ export default function Wedge({
         >
           <polygon
             points="0,40 50,0 100,40 100,160 0,160"
-            fill={COLOR[color as Exclude<WedgeColor, "none">]}
+            fill={COLOR_VAR[color as Exclude<WedgeColor, "none">]}
           />
         </svg>
         <svg
@@ -65,7 +65,7 @@ export default function Wedge({
   }
 
   const isRight = corner === "top-right";
-  const fill = COLOR[color as Exclude<WedgeColor, "none">];
+  const fill = COLOR_VAR[color as Exclude<WedgeColor, "none">];
 
   return (
     <div

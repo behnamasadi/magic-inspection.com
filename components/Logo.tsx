@@ -19,7 +19,7 @@ export default function Logo({
       src={src}
       alt="Photonxy AI"
       style={style}
-      className="block select-none"
+      className="block select-none logo-img"
       draggable={false}
     />
   );
