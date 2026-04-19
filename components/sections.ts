@@ -57,7 +57,7 @@ export const sections: Section[] = [
     card: { right: "92%", top: "16%" },
     boardTransform: `${BOARD_CENTER} translate(-4.75%, -18.45%)`,
     wedgeCorner: "top-right",
-    wedgeColor: "ember",
+    wedgeColor: "flame",
   },
   {
     id: "intelligence",
@@ -76,7 +76,7 @@ export const sections: Section[] = [
     card: { left: "13.5%", top: "38%" },
     boardTransform: `${BOARD_CENTER} translate(-16.73%, -40.6%)`,
     wedgeCorner: "top-left",
-    wedgeColor: "ember",
+    wedgeColor: "flame",
   },
   {
     id: "automation",
