@@ -12,12 +12,14 @@ export default function Logo({
     ? { width: "100%", height: "auto" }
     : { width: size ?? 28, height: size ?? 28 };
 
-  const src = iconOnly ? "/logo-icon.png" : "/logo.png";
+  // Bump LOGO_VER whenever the logo asset changes so CDN/browser caches miss.
+  const LOGO_VER = "2";
+  const src = `${iconOnly ? "/logo-icon.png" : "/logo.png"}?v=${LOGO_VER}`;
 
   return (
     <img
       src={src}
-      alt="Photonxy AI"
+      alt="Magic Inspection"
       style={style}
       className="block select-none logo-img"
       draggable={false}
