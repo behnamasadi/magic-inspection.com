@@ -7,7 +7,7 @@ import Poster from "./Poster";
 import Logo from "./Logo";
 import Wedge from "./Wedge";
 
-const TRANSITION_MS = 1100;
+const TRANSITION_MS = 700;
 const WHEEL_THRESHOLD = 40;
 
 export default function TravelBoard() {

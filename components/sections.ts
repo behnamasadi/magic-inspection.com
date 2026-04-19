@@ -63,7 +63,7 @@ export const sections: Section[] = [
       "Weather-sealed kits for campaigns in rain, dust, heat, and humidity.",
       "Lightweight enough for a single operator, rugged enough for a full field day.",
     ],
-    position: { x: 140, y: -20, scale: 1.15 },
+    position: { x: 35, y: -145, scale: 1.05 },
     wedgeCorner: "top-right",
     wedgeColor: "flame",
   },
@@ -82,7 +82,7 @@ export const sections: Section[] = [
       "Align every new capture to a master model so change over time becomes measurable.",
       "Run on-device for rapid previews, or offload to the cloud for full-resolution outputs.",
     ],
-    position: { x: -30, y: -125, scale: 0.88 },
+    position: { x: -110, y: -300, scale: 0.95 },
     wedgeCorner: "top-left",
     wedgeColor: "flame",
   },
@@ -101,7 +101,7 @@ export const sections: Section[] = [
       "Automatic report generation — measurements, tilt analysis, and material condition maps.",
       "Alerts when any tracked metric crosses a threshold you set.",
     ],
-    position: { x: 150, y: -230, scale: 1.2 },
+    position: { x: 120, y: -450, scale: 1.08 },
     wedgeCorner: "top-right",
     wedgeColor: "peach",
   },
@@ -120,7 +120,7 @@ export const sections: Section[] = [
       "Role-based access for museums, agencies, universities, and external consultants.",
       "Export to GIS, BIM, and standard conservation tool formats.",
     ],
-    position: { x: -25, y: -340, scale: 0.92 },
+    position: { x: -105, y: -690, scale: 0.95 },
     wedgeCorner: "top-left",
     wedgeColor: "peach",
   },
@@ -132,9 +132,10 @@ export const sections: Section[] = [
     posterImage: "",
     posterHeadline: "",
     bullets: [],
-    // Centered between the zig-zag of content cards, zoomed way out so the
-    // logo sits alone while the whole "map" of prior sections is visible.
-    position: { x: 65, y: -170, scale: 0.3 },
+    // Dramatic pull-back: board scales to 13% (matching WayOut's outro)
+    // and recenters midway through the zig-zag so all sections are visible
+    // at once with the logo at viewport center.
+    position: { x: -20, y: -370, scale: 0.13 },
     wedgeCorner: "none",
     wedgeColor: "none",
   },
