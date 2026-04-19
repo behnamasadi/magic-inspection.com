@@ -131,6 +131,7 @@ export default function TravelBoard() {
               willChange: "transform",
             }}
           >
+            <BoardPath />
             {sections.map((s, i) => (
               <SectionCard
                 key={s.id}
@@ -178,6 +179,86 @@ export default function TravelBoard() {
         />
       )}
     </>
+  );
+}
+
+function BoardPath() {
+  // Compute bounds across all section positions so the SVG is sized to
+  // contain the full path with a margin.
+  const pad = 40;
+  const xs = sections.map((s) => s.position.x);
+  const ys = sections.map((s) => s.position.y);
+  const minX = Math.min(...xs) - pad;
+  const maxX = Math.max(...xs) + pad;
+  const minY = Math.min(...ys) - pad;
+  const maxY = Math.max(...ys) + pad;
+  const w = maxX - minX;
+  const h = maxY - minY;
+  const points = sections
+    .filter((s) => s.id !== "outro")
+    .map((s) => `${s.position.x - minX},${s.position.y - minY}`)
+    .join(" ");
+  return (
+    <svg
+      style={{
+        position: "absolute",
+        left: `${minX}vw`,
+        top: `${minY}dvh`,
+        width: `${w}vw`,
+        height: `${h}dvh`,
+        pointerEvents: "none",
+        overflow: "visible",
+      }}
+      viewBox={`0 0 ${w} ${h}`}
+      preserveAspectRatio="none"
+    >
+      <polyline
+        points={points}
+        fill="none"
+        stroke="var(--accent)"
+        strokeWidth={6}
+        strokeOpacity={0.35}
+        strokeDasharray="3 2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        vectorEffect="non-scaling-stroke"
+      />
+      {sections
+        .filter((s) => s.id !== "outro")
+        .map((s, i) => (
+          <g key={s.id}>
+            <circle
+              cx={s.position.x - minX}
+              cy={s.position.y - minY}
+              r={1.2}
+              fill="var(--accent)"
+              fillOpacity={0.9}
+              vectorEffect="non-scaling-stroke"
+            />
+            <circle
+              cx={s.position.x - minX}
+              cy={s.position.y - minY}
+              r={2.6}
+              fill="none"
+              stroke="var(--accent)"
+              strokeOpacity={0.45}
+              strokeWidth={0.4}
+              vectorEffect="non-scaling-stroke"
+            />
+            <text
+              x={s.position.x - minX + 3.5}
+              y={s.position.y - minY + 1.4}
+              fill="var(--accent)"
+              fillOpacity={0.55}
+              fontSize={2.2}
+              fontFamily="ui-monospace, Menlo, monospace"
+              style={{ fontVariantNumeric: "tabular-nums" }}
+            >
+              {`0${i + 1} / ${sections.length - 1}`}
+            </text>
+          </g>
+        ))}
+    </svg>
   );
 }
 
