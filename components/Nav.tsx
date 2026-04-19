@@ -9,18 +9,6 @@ export default function Nav() {
         </span>
       </a>
       <div className="grow" />
-      <a
-        href="#careers"
-        className="mr-4 sm:mr-8 text-xl hover:underline underline-offset-8"
-      >
-        Careers
-      </a>
-      <a
-        href="#contact"
-        className="text-xl hover:underline underline-offset-8"
-      >
-        Contact
-      </a>
     </header>
   );
 }
