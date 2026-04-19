@@ -9,6 +9,20 @@ export default function Nav() {
         </span>
       </a>
       <div className="grow" />
+      <nav className="flex items-center gap-6 text-sm">
+        <a
+          href="https://demo.magic-inspection.com/"
+          className="text-light hover:text-[color:var(--accent)] transition-colors"
+        >
+          Demo
+        </a>
+        <a
+          href="https://app.magic-inspection.com/"
+          className="nav-cta"
+        >
+          Open app
+        </a>
+      </nav>
     </header>
   );
 }
