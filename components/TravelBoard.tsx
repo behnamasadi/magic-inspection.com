@@ -212,10 +212,10 @@ function SectionBody({
     return (
       <div className="text-center select-none">
         <h1 className="font-bold tracking-tight leading-none text-[clamp(4rem,14vw,12rem)]">
-          PHOTONXY
+          MAGIC
         </h1>
         <h1 className="font-bold tracking-tight leading-none text-[clamp(4rem,14vw,12rem)] mt-[2%]">
-          AI
+          INSPECTION
         </h1>
         <p className="text-[clamp(0.95rem,1.8vw,1.4rem)] text-muted mt-6">
           {section.tagline}
@@ -225,8 +225,8 @@ function SectionBody({
   }
   if (section.id === "outro") {
     return (
-      <div className="w-[48vw] max-w-[560px]">
-        <Logo fill />
+      <div className="w-[28vw] max-w-[320px]">
+        <Logo fill iconOnly />
       </div>
     );
   }
