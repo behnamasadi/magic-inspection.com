@@ -63,7 +63,7 @@ export const sections: Section[] = [
       "Weather-sealed kits for campaigns in rain, dust, heat, and humidity.",
       "Lightweight enough for a single operator, rugged enough for a full field day.",
     ],
-    position: { x: 35, y: -145, scale: 1.05 },
+    position: { x: -45, y: -145, scale: 1.05 },
     wedgeCorner: "top-right",
     wedgeColor: "flame",
   },
