@@ -1,44 +1,17 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { AnimatePresence, motion, type Variants } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { sections, type SectionId } from "./sections";
 import Poster from "./Poster";
 import Logo from "./Logo";
 import Wedge from "./Wedge";
 
-const TRANSITION_MS = 900;
+const TRANSITION_MS = 1100;
 const WHEEL_THRESHOLD = 40;
-
-const stageVariants: Variants = {
-  enter: (d: number) => ({
-    opacity: 0,
-    x: d > 0 ? "6vw" : "-6vw",
-    y: "2vh",
-  }),
-  center: {
-    opacity: 1,
-    x: 0,
-    y: 0,
-    transition: {
-      duration: TRANSITION_MS / 1000,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-  leave: (d: number) => ({
-    opacity: 0,
-    x: d > 0 ? "-6vw" : "6vw",
-    y: "-2vh",
-    transition: {
-      duration: (TRANSITION_MS - 100) / 1000,
-      ease: [0.65, 0, 0.35, 1],
-    },
-  }),
-};
 
 export default function TravelBoard() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [direction, setDirection] = useState(1);
   const [posterFor, setPosterFor] = useState<SectionId | null>(null);
   const lockedRef = useRef(false);
   const wheelAccumRef = useRef(0);
@@ -54,7 +27,6 @@ export default function TravelBoard() {
       const next = Math.max(0, Math.min(sections.length - 1, activeIndex + dir));
       if (next === activeIndex) return;
       lockedRef.current = true;
-      setDirection(dir);
       setActiveIndex(next);
       window.setTimeout(() => {
         lockedRef.current = false;
@@ -67,7 +39,6 @@ export default function TravelBoard() {
     (i: number) => {
       if (lockedRef.current || i === activeIndex) return;
       lockedRef.current = true;
-      setDirection(i > activeIndex ? 1 : -1);
       setActiveIndex(i);
       window.setTimeout(() => {
         lockedRef.current = false;
@@ -135,34 +106,45 @@ export default function TravelBoard() {
     };
   }, [go, posterFor]);
 
-  // preferred side for text relative to media — alternates left/right
-  const textOnLeft = useMemo(() => activeIndex % 2 === 1, [activeIndex]);
+  // Camera transform: scale about origin, then translate so the active
+  // section's (x, y) lands at viewport center. Applied in CSS order:
+  //   scale(s) translate(-x, -y)  — translate applies first, then scale.
+  const boardTransform = useMemo(() => {
+    const { x, y, scale } = active.position;
+    return `scale(${scale}) translate(${-x}vw, ${-y}dvh)`;
+  }, [active]);
 
   return (
     <>
-      {/* Stage */}
+      {/* Stage: clips the travel board to the viewport */}
       <div className="fixed inset-0 z-10 overflow-hidden">
-        <AnimatePresence initial={false} mode="sync" custom={direction}>
-          <motion.div
-            key={activeId}
-            custom={direction}
-            variants={stageVariants}
-            initial="enter"
-            animate="center"
-            exit="leave"
-            className="absolute inset-0 flex items-center justify-center px-8"
-            style={{ willChange: "transform, opacity" }}
+        {/* Anchor pinned at viewport center. The board is positioned relative
+            to this point, so translating the board by (-x, -y) brings the
+            board's (x, y) to the center. */}
+        <div className="absolute left-1/2 top-1/2 w-0 h-0">
+          <div
+            className="travel-board"
+            style={{
+              transform: boardTransform,
+              transformOrigin: "0 0",
+              transition: `transform ${TRANSITION_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`,
+              willChange: "transform",
+            }}
           >
-            <SectionBody
-              section={active}
-              textOnLeft={textOnLeft}
-              onOpenPoster={(id) => setPosterFor(id)}
-            />
-          </motion.div>
-        </AnimatePresence>
+            {sections.map((s, i) => (
+              <SectionCard
+                key={s.id}
+                section={s}
+                textOnLeft={i % 2 === 1}
+                isActive={i === activeIndex}
+                onOpenPoster={(id) => setPosterFor(id)}
+              />
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* Persistent wedge, crossfades with active section */}
+      {/* Persistent wedge overlay — crossfades as the section changes */}
       <AnimatePresence initial={false}>
         <motion.div
           key={`wedge-${activeId}`}
@@ -196,6 +178,43 @@ export default function TravelBoard() {
         />
       )}
     </>
+  );
+}
+
+function SectionCard({
+  section,
+  textOnLeft,
+  isActive,
+  onOpenPoster,
+}: {
+  section: (typeof sections)[number];
+  textOnLeft: boolean;
+  isActive: boolean;
+  onOpenPoster: (id: SectionId) => void;
+}) {
+  const { x, y } = section.position;
+  return (
+    <div
+      className="absolute"
+      style={{
+        left: `${x}vw`,
+        top: `${y}dvh`,
+        transform: "translate(-50%, -50%)",
+        width: "100vw",
+        height: "100dvh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "0 2rem",
+        pointerEvents: isActive ? "auto" : "none",
+      }}
+    >
+      <SectionBody
+        section={section}
+        textOnLeft={textOnLeft}
+        onOpenPoster={onOpenPoster}
+      />
+    </div>
   );
 }
 
