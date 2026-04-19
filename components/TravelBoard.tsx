@@ -225,8 +225,8 @@ function SectionBody({
   }
   if (section.id === "outro") {
     return (
-      <div className="w-[48vw] max-w-[560px]">
-        <Logo fill />
+      <div className="w-[28vw] max-w-[320px]">
+        <Logo fill iconOnly />
       </div>
     );
   }

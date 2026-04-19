@@ -2,11 +2,24 @@
 
 import type { WedgeColor, WedgeCorner } from "./sections";
 
-const COLOR_VAR: Record<Exclude<WedgeColor, "none">, string> = {
-  ember: "var(--wedge-ember)",
-  flame: "var(--wedge-flame)",
-  peach: "var(--wedge-peach)",
-};
+// All wedges use the same cyan → violet gradient as the "Open app" CTA.
+// SVG linearGradient IDs must be unique per <svg> instance to avoid conflicts.
+const GRAD_ID = {
+  hero: "wedge-grad-hero",
+  right: "wedge-grad-right",
+  left: "wedge-grad-left",
+} as const;
+
+function WedgeGradient({ id }: { id: string }) {
+  return (
+    <defs>
+      <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stopColor="var(--accent)" />
+        <stop offset="100%" stopColor="var(--accent-2)" />
+      </linearGradient>
+    </defs>
+  );
+}
 
 type Props = {
   corner: WedgeCorner;
@@ -44,9 +57,10 @@ export default function Wedge({
           preserveAspectRatio="none"
           className="absolute inset-0 w-full h-full"
         >
+          <WedgeGradient id={GRAD_ID.hero} />
           <polygon
             points="0,40 50,0 100,40 100,160 0,160"
-            fill={COLOR_VAR[color as Exclude<WedgeColor, "none">]}
+            fill={`url(#${GRAD_ID.hero})`}
           />
         </svg>
         <svg
@@ -65,7 +79,8 @@ export default function Wedge({
   }
 
   const isRight = corner === "top-right";
-  const fill = COLOR_VAR[color as Exclude<WedgeColor, "none">];
+  const gradId = isRight ? GRAD_ID.right : GRAD_ID.left;
+  const fill = `url(#${gradId})`;
 
   return (
     <div
@@ -79,6 +94,7 @@ export default function Wedge({
         preserveAspectRatio="none"
         className="absolute inset-0 w-full h-full"
       >
+        <WedgeGradient id={gradId} />
         {isRight ? (
           <>
             {/* angular kite anchored top-right */}
