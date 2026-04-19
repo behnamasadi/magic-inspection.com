@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#11182a"/>
+      <stop offset="100%" stop-color="#0a1220"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+
+  <g stroke="rgba(160,210,220,0.5)" stroke-width="2" fill="none">
+    <!-- Pipeline boxes -->
+    <rect x="150"  y="420" width="200" height="120" rx="10"/>
+    <rect x="500"  y="300" width="200" height="120" rx="10"/>
+    <rect x="500"  y="540" width="200" height="120" rx="10"/>
+    <rect x="850"  y="420" width="200" height="120" rx="10"/>
+    <rect x="1200" y="420" width="200" height="120" rx="10"/>
+    <!-- Connectors -->
+    <path d="M350,480 Q430,480 500,360"/>
+    <path d="M350,480 Q430,480 500,600"/>
+    <path d="M700,360 Q780,360 850,480"/>
+    <path d="M700,600 Q780,600 850,480"/>
+    <path d="M1050,480 L1200,480"/>
+  </g>
+
+  <!-- Labels -->
+  <g fill="rgba(160,210,220,0.7)" font-family="ui-monospace, Menlo, monospace" font-size="20" text-anchor="middle">
+    <text x="250"  y="490">INGEST</text>
+    <text x="600"  y="370">ALIGN</text>
+    <text x="600"  y="610">DETECT</text>
+    <text x="950"  y="490">MODEL</text>
+    <text x="1300" y="490">REPORT</text>
+  </g>
+
+  <!-- Progress dots on last node -->
+  <g fill="rgba(160,210,220,0.6)">
+    <circle cx="1240" cy="510" r="4"/>
+    <circle cx="1260" cy="510" r="4"/>
+    <circle cx="1280" cy="510" r="4"/>
+    <circle cx="1300" cy="510" r="4"/>
+    <circle cx="1320" cy="510" r="4"/>
+  </g>
+
+  <text x="60" y="960" font-family="ui-monospace, Menlo, monospace" font-size="22"
+        fill="rgba(235,239,244,0.35)" letter-spacing="6">PROCESSING PIPELINE — PLACEHOLDER</text>
+</svg>
