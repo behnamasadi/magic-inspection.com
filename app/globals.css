@@ -14,10 +14,14 @@
   --accent-2: #7c3aed;   /* violet */
   --ok:       #10b981;
 
-  /* Wedge tokens reused by existing components; map to the brand gradient. */
-  --wedge-ember: var(--accent);     /* hero scroll pentagon */
-  --wedge-flame: var(--accent);     /* engineering / intelligence */
-  --wedge-peach: var(--accent-2);   /* automation / engagement */
+  /* Per-section wedge gradients — each section gets its own flavor of the
+     brand palette, the way WayOut uses red/orange to brand each stop. */
+  --wedge-ember-from: #4cc2ff;      /* hero: pure cyan → soft cyan */
+  --wedge-ember-to:   #7cc8ff;
+  --wedge-flame-from: #4cc2ff;      /* engineering + intelligence: cyan → violet */
+  --wedge-flame-to:   #7c3aed;
+  --wedge-peach-from: #7c3aed;      /* automation + engagement: violet → magenta */
+  --wedge-peach-to:   #d946ef;
   --logo-filter: none;
 }
 
@@ -38,6 +42,19 @@ body {
   letter-spacing: -0.01em;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 1000' preserveAspectRatio='xMidYMid slice'><g fill='none' stroke='%234cc2ff' stroke-width='1' stroke-opacity='0.22'><polygon points='80,120 260,60 340,220 180,300'/><polygon points='340,220 520,140 620,330 440,420'/><polygon points='620,330 840,220 940,450 720,540'/><polygon points='940,450 1160,340 1260,560 1040,670'/><polygon points='1260,560 1460,460 1540,720 1340,820'/><polygon points='180,300 340,220 440,420 260,480'/><polygon points='440,420 620,330 720,540 560,640'/><polygon points='720,540 940,450 1040,670 860,780'/><polygon points='260,480 440,420 560,640 380,720'/><polygon points='560,640 720,540 860,780 700,880'/><polygon points='80,600 240,520 360,720 180,820'/><polygon points='360,720 560,640 700,880 500,940'/><polygon points='1040,670 1260,560 1340,820 1160,900'/></g><g fill='%234cc2ff' fill-opacity='0.55'><circle cx='80' cy='120' r='2.2'/><circle cx='260' cy='60' r='1.8'/><circle cx='340' cy='220' r='2.4'/><circle cx='520' cy='140' r='1.8'/><circle cx='620' cy='330' r='2.2'/><circle cx='840' cy='220' r='2'/><circle cx='940' cy='450' r='2.4'/><circle cx='1160' cy='340' r='2'/><circle cx='1260' cy='560' r='2.2'/><circle cx='1460' cy='460' r='1.8'/><circle cx='1540' cy='720' r='2.4'/><circle cx='180' cy='300' r='1.8'/><circle cx='440' cy='420' r='2.2'/><circle cx='720' cy='540' r='2'/><circle cx='1040' cy='670' r='2.4'/><circle cx='1340' cy='820' r='2'/><circle cx='260' cy='480' r='1.8'/><circle cx='560' cy='640' r='2.2'/><circle cx='860' cy='780' r='2'/><circle cx='380' cy='720' r='2'/><circle cx='700' cy='880' r='2.2'/><circle cx='80' cy='600' r='1.8'/><circle cx='240' cy='520' r='2'/><circle cx='360' cy='720' r='2.2'/><circle cx='500' cy='940' r='2'/><circle cx='1160' cy='900' r='2'/></g></svg>");
+  background-size: 160vw 100dvh;
+  background-repeat: no-repeat;
+  animation: drift 60s linear infinite;
+  opacity: 0.9;
+}
+
 button { font-family: inherit; }
 
 .kenburns {
@@ -48,25 +65,23 @@ button { font-family: inherit; }
   100% { transform: scale(1.18) translate(-2%, -2%); }
 }
 
+/* Faint triangulated network, WayOut-style. An SVG mesh drifts slowly in
+   the background; the nodes are vertices and the edges are thin cyan
+   strokes so the viewport feels like it's sitting inside a 3D web. */
 .particles {
   position: absolute;
   inset: 0;
   z-index: -10;
-  background:
-    radial-gradient(1px 1px at 10% 20%, rgba(230, 237, 245, 0.45) 50%, transparent 51%),
-    radial-gradient(1px 1px at 80% 15%, rgba(230, 237, 245, 0.30) 50%, transparent 51%),
-    radial-gradient(1px 1px at 30% 70%, rgba(230, 237, 245, 0.40) 50%, transparent 51%),
-    radial-gradient(1px 1px at 60% 85%, rgba(230, 237, 245, 0.25) 50%, transparent 51%),
-    radial-gradient(1px 1px at 90% 55%, rgba(230, 237, 245, 0.35) 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 45% 40%, rgba(76, 194, 255, 0.55) 50%, transparent 51%),
-    radial-gradient(1px 1px at 15% 90%, rgba(230, 237, 245, 0.25) 50%, transparent 51%),
-    radial-gradient(1px 1px at 75% 60%, rgba(230, 237, 245, 0.35) 50%, transparent 51%);
-  background-size: 100% 100%;
-  animation: drift 40s linear infinite;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 1000' preserveAspectRatio='xMidYMid slice'><g fill='none' stroke='%234cc2ff' stroke-width='1' stroke-opacity='0.35'><polygon points='80,120 260,60 340,220 180,300'/><polygon points='340,220 520,140 620,330 440,420'/><polygon points='620,330 840,220 940,450 720,540'/><polygon points='940,450 1160,340 1260,560 1040,670'/><polygon points='1260,560 1460,460 1540,720 1340,820'/><polygon points='180,300 340,220 440,420 260,480'/><polygon points='440,420 620,330 720,540 560,640'/><polygon points='720,540 940,450 1040,670 860,780'/><polygon points='260,480 440,420 560,640 380,720'/><polygon points='560,640 720,540 860,780 700,880'/><polygon points='80,600 240,520 360,720 180,820'/><polygon points='360,720 560,640 700,880 500,940'/><polygon points='1040,670 1260,560 1340,820 1160,900'/></g><g fill='%234cc2ff' fill-opacity='0.75'><circle cx='80' cy='120' r='2.5'/><circle cx='260' cy='60' r='2'/><circle cx='340' cy='220' r='2.8'/><circle cx='520' cy='140' r='2'/><circle cx='620' cy='330' r='2.5'/><circle cx='840' cy='220' r='2.2'/><circle cx='940' cy='450' r='2.8'/><circle cx='1160' cy='340' r='2.2'/><circle cx='1260' cy='560' r='2.5'/><circle cx='1460' cy='460' r='2'/><circle cx='1540' cy='720' r='2.8'/><circle cx='180' cy='300' r='2'/><circle cx='440' cy='420' r='2.5'/><circle cx='720' cy='540' r='2.2'/><circle cx='1040' cy='670' r='2.8'/><circle cx='1340' cy='820' r='2.2'/><circle cx='260' cy='480' r='2'/><circle cx='560' cy='640' r='2.5'/><circle cx='860' cy='780' r='2.2'/><circle cx='380' cy='720' r='2.2'/><circle cx='700' cy='880' r='2.5'/><circle cx='80' cy='600' r='2'/><circle cx='240' cy='520' r='2.2'/><circle cx='360' cy='720' r='2.5'/><circle cx='500' cy='940' r='2.2'/><circle cx='1160' cy='900' r='2.2'/></g></svg>");
+  background-size: 160vw 100dvh;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  animation: drift 60s linear infinite;
+  opacity: 0.85;
 }
 @keyframes drift {
   0%   { background-position: 0 0; }
-  100% { background-position: 120px -80px; }
+  100% { background-position: -60vw -8dvh; }
 }
 
 .travel-board { transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1); }

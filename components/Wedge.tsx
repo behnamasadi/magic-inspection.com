@@ -10,12 +10,12 @@ const GRAD_ID = {
   left: "wedge-grad-left",
 } as const;
 
-function WedgeGradient({ id }: { id: string }) {
+function WedgeGradient({ id, color }: { id: string; color: WedgeColor }) {
   return (
     <defs>
       <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="var(--accent)" />
-        <stop offset="100%" stopColor="var(--accent-2)" />
+        <stop offset="0%" stopColor={`var(--wedge-${color}-from)`} />
+        <stop offset="100%" stopColor={`var(--wedge-${color}-to)`} />
       </linearGradient>
     </defs>
   );
@@ -57,7 +57,7 @@ export default function Wedge({
           preserveAspectRatio="none"
           className="absolute inset-0 w-full h-full"
         >
-          <WedgeGradient id={GRAD_ID.hero} />
+          <WedgeGradient id={GRAD_ID.hero} color={color} />
           <polygon
             points="0,40 50,0 100,40 100,160 0,160"
             fill={`url(#${GRAD_ID.hero})`}
@@ -94,7 +94,7 @@ export default function Wedge({
         preserveAspectRatio="none"
         className="absolute inset-0 w-full h-full"
       >
-        <WedgeGradient id={gradId} />
+        <WedgeGradient id={gradId} color={color} />
         {isRight ? (
           <>
             {/* angular kite anchored top-right */}

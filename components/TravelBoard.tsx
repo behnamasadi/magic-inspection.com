@@ -236,7 +236,10 @@ function SectionBody({
         <h1 className="font-bold tracking-tight leading-none text-[clamp(4rem,14vw,12rem)] mt-[2%]">
           INSPECTION
         </h1>
-        <p className="text-[clamp(0.95rem,1.8vw,1.4rem)] text-muted mt-6">
+        <p
+          className="text-[clamp(0.95rem,1.8vw,1.4rem)] text-muted mt-6"
+          style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace", letterSpacing: 0 }}
+        >
           {section.tagline}
         </p>
       </div>
