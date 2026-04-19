@@ -1,7 +1,6 @@
 import Nav from "@/components/Nav";
 import TravelBoard from "@/components/TravelBoard";
 import CopyrightBar from "@/components/CopyrightBar";
-import ThemePicker from "@/components/ThemePicker";
 
 export default function HomePage() {
   return (
@@ -10,7 +9,6 @@ export default function HomePage() {
       <Nav />
       <TravelBoard />
       <CopyrightBar />
-      <ThemePicker />
     </main>
   );
 }

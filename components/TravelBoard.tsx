@@ -217,7 +217,7 @@ function SectionBody({
         <h1 className="font-bold tracking-tight leading-none text-[clamp(4rem,14vw,12rem)] mt-[2%]">
           INSPECTION
         </h1>
-        <p className="text-[clamp(0.95rem,1.8vw,1.4rem)] opacity-80 mt-6 font-mono">
+        <p className="text-[clamp(0.95rem,1.8vw,1.4rem)] text-muted mt-6">
           {section.tagline}
         </p>
       </div>
