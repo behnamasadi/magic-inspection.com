@@ -1,6 +1,13 @@
+import Logo from "./Logo";
+
 export default function Nav() {
   return (
-    <header className="fixed top-0 right-0 z-30 flex h-16 items-center justify-end p-5 w-screen">
+    <header className="fixed top-0 left-0 right-0 z-30 flex h-16 items-center px-5 w-screen">
+      <a href="#top" className="flex items-center gap-2" aria-label="Home">
+        <span className="block h-10 w-10">
+          <Logo fill iconOnly />
+        </span>
+      </a>
       <div className="grow" />
       <a
         href="#careers"
@@ -10,7 +17,7 @@ export default function Nav() {
       </a>
       <a
         href="#contact"
-        className="mr-4 sm:mr-8 text-xl hover:underline underline-offset-8"
+        className="text-xl hover:underline underline-offset-8"
       >
         Contact
       </a>

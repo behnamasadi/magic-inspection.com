@@ -4,8 +4,8 @@ import type { WedgeColor, WedgeCorner } from "./sections";
 
 const COLOR: Record<Exclude<WedgeColor, "none">, string> = {
   ember: "#dc0f14",
-  flame: "#eb5023",
-  peach: "#fab469",
+  flame: "#3a5fe0",
+  peach: "#8a5ee0",
 };
 
 type Props = {
