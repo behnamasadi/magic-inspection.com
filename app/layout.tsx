@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Photonxy AI",
+  title: "Magic Inspection",
   description: "Placeholder description.",
 };
 

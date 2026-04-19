@@ -17,7 +17,7 @@ export default function Logo({
   return (
     <img
       src={src}
-      alt="Photonxy AI"
+      alt="Magic Inspection"
       style={style}
       className="block select-none logo-img"
       draggable={false}

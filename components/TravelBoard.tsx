@@ -212,10 +212,10 @@ function SectionBody({
     return (
       <div className="text-center select-none">
         <h1 className="font-bold tracking-tight leading-none text-[clamp(4rem,14vw,12rem)]">
-          PHOTONXY
+          MAGIC
         </h1>
         <h1 className="font-bold tracking-tight leading-none text-[clamp(4rem,14vw,12rem)] mt-[2%]">
-          AI
+          INSPECTION
         </h1>
         <p className="text-[clamp(0.95rem,1.8vw,1.4rem)] opacity-80 mt-6 font-mono">
           {section.tagline}
