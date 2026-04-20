@@ -12,7 +12,7 @@ export default function Nav() {
       <nav className="flex items-center gap-6 text-sm">
         <a
           href="https://demo.magic-inspection.com/"
-          className="text-light hover:text-[color:var(--accent)] transition-colors"
+          className="nav-cta"
         >
           Demo
         </a>
